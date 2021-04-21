@@ -32,11 +32,11 @@ class TaskListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as? TaskTableViewCell
 
         let task = TaskController.sharedInstance.tasks[indexPath.row]
         
-        cell.textLabel?.text = task.taskName
+        cell?.task = task
         
         return cell
     }
