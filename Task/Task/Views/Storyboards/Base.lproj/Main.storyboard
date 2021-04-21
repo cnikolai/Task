@@ -40,7 +40,7 @@
                                                         <constraint firstAttribute="width" secondItem="HU3-Bn-azx" secondAttribute="height" multiplier="1:1" id="IQM-tI-2XI"/>
                                                     </constraints>
                                                     <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                                                    <state key="normal" title="Button" image="incomplete"/>
+                                                    <state key="normal" title="Button" backgroundImage="incomplete"/>
                                                     <connections>
                                                         <action selector="completionButtonTapped:" destination="OWU-H4-Dvm" eventType="touchUpInside" id="0el-tO-K5Z"/>
                                                     </connections>

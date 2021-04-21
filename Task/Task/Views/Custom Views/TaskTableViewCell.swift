@@ -28,7 +28,7 @@ class TaskTableViewCell: UITableViewCell {
     func updateViews() {
         guard let task = self.task else { return }
         taskNameLabel.text = task.taskName
-        task.isComplete ? completionButton.image(for: ) = #imageLiteral(resourceName: "complete") : completionButton.imageView = #imageLiteral(resourceName: "incomplete")
+        task.isComplete() ? completionButton..setBackgroundImage(UIImage(named: "incomplete"), for: .normal) : completionButton..setBackgroundImage(UIImage(named: "complete"), for: .normal)
         
     }
 }
