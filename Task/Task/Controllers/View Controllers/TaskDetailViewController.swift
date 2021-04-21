@@ -47,10 +47,8 @@ class TaskDetailViewController: UIViewController {
         guard let task = task else { return }
         taskNameTextField.text = task.taskName
         taskNotesTextView.text = task.notes
-        guard let taskDueDatePicker.date = task.dueDate else { return }
-        let dateFormater: DateFormatter = DateFormatter()
-        dateFormater.dateFormat = "MM/dd/yyyy"
-        let stringFromDate: String = dateFormater.stringFromDate(task.dueDate ?? Date(10/04/1978)) as String
+        taskDueDatePicker.date = task.dueDate ?? Date()
+
 
     }
 }
