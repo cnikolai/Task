@@ -34,10 +34,10 @@ class TaskListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as? TaskTableViewCell else { return UITableViewCell() }
 
-        let task = TaskController.sharedInstance.tasks[indexPath.row]
+        //let task = TaskController.sharedInstance.tasks[indexPath.row]
         
         // cell.task = task
-        cell.updateViews(for: task)
+        cell.updateViews()
         
         // Step 3: Assigning the delegate
         cell.delegate = self
@@ -74,15 +74,10 @@ class TaskListTableViewController: UITableViewController {
 // MARK:- Extension
 // Step 4: using an extension, conform TaskListTableVC to the TaskCompletionDelegate
 extension TaskListTableViewController: TaskCompletionDelegate {
-    func taskCellButtonTapped(for cell: TaskTableViewCell) {
-        // Get the indexPath for the cell that was selected
-        guard let indexPath = tableView.indexPath(for: cell) else { return }
-        // Grabbing the setting from the source of truth at the index of the selected cell
-        let task = TaskController.sharedInstance.tasks[indexPath.row]
-        // Calling .toggleIsOn function to toggle the isOn property of the passed in setting
+    func taskCellButtonTapped(for sender: TaskTableViewCell) {
+        guard let task = sender.task else { return }
         TaskController.sharedInstance.toggleIsComplete(task: task)
-        // Call the updateViews function on our cell to update the view and reflect the newly changed isOn property
-        cell.updateViews(for: task)
+        sender.updateViews()
     }
     
    

@@ -17,7 +17,7 @@ class TaskTableViewCell: UITableViewCell {
     // MARK:- Properties
     var task: Task? {
         didSet {
-            updateViews(for: task!)
+            updateViews()
         }
     }
     // Step 2
@@ -34,7 +34,8 @@ class TaskTableViewCell: UITableViewCell {
     }
     
     // MARK:- Functions
-    func updateViews(for task: Task) {
+    func updateViews() {
+        guard let task = task else { return }
         taskNameLabel.text = task.taskName
         task.isComplete ? completionButton.setBackgroundImage(UIImage(named: "complete"), for: .normal):completionButton.setBackgroundImage(UIImage(named: "incomplete"), for: .normal)
     
