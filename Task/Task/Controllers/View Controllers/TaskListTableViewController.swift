@@ -34,11 +34,11 @@ class TaskListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as? TaskTableViewCell else { return UITableViewCell() }
 
-        //let task = TaskController.sharedInstance.tasks[indexPath.row]
+        let task = TaskController.sharedInstance.tasks[indexPath.row]
         
-        // cell.task = task
         cell.updateViews()
         
+        cell.task = task
         // Step 3: Assigning the delegate
         cell.delegate = self
         
