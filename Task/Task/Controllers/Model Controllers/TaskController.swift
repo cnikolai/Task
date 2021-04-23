@@ -10,6 +10,7 @@ import Foundation
 class TaskController {
     
     static var sharedInstance = TaskController()
+    
     // MARK:- Properties
     var tasks: [Task] = []
     // MARK:- CRUD

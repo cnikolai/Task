@@ -36,7 +36,11 @@ class TaskListTableViewController: UITableViewController {
 
         let task = TaskController.sharedInstance.tasks[indexPath.row]
         
-        cell.task = task
+        // cell.task = task
+        cell.updateViews(for: task)
+        
+        // Step 3: Assigning the delegate
+        cell.delegate = self
         
         return cell
     }
@@ -65,6 +69,21 @@ class TaskListTableViewController: UITableViewController {
             destinationVC.task = task
         }
     }
- 
+}//end of class
 
+// MARK:- Extension
+// Step 4: using an extension, conform TaskListTableVC to the TaskCompletionDelegate
+extension TaskListTableViewController: TaskCompletionDelegate {
+    func taskCellButtonTapped(for cell: TaskTableViewCell) {
+        // Get the indexPath for the cell that was selected
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        // Grabbing the setting from the source of truth at the index of the selected cell
+        let task = TaskController.sharedInstance.tasks[indexPath.row]
+        // Calling .toggleIsOn function to toggle the isOn property of the passed in setting
+        TaskController.sharedInstance.toggleIsComplete(task: task)
+        // Call the updateViews function on our cell to update the view and reflect the newly changed isOn property
+        cell.updateViews(for: task)
+    }
+    
+   
 }
